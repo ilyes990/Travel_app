@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/Questionnaire/form_page.dart';
+import 'package:travel_app/adventure_details.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -36,11 +38,23 @@ class HomeView extends StatelessWidget {
                   margin: EdgeInsets.all(8.0),
                   child: Stack(
                     children: [
-                      Image.network(
-                        '', // Replace with actual URL
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                        height: 200,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AdventureFormPage(
+                                geminiService: GeminiService(),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Image.network(
+                          '', // Replace with actual URL
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: 200,
+                        ),
                       ),
                       Positioned(
                         bottom: 10,
