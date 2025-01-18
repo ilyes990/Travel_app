@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/Auth/signup_view.dart';
+import 'package:travel_app/features/Auth/login_view.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignupView extends StatelessWidget {
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Sign Up to App'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            TextFormField(
+            TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 16.0),
-            TextFormField(
+            TextField(
               decoration: InputDecoration(
                 labelText: 'Password',
                 border: OutlineInputBorder(),
@@ -32,36 +32,41 @@ class LoginView extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                // Handle login logic
+                // Handle email signup
               },
-              child: Text('Login'),
-            ),
-            SizedBox(height: 16.0),
-            Text('or'),
-            SizedBox(height: 16.0),
-            ElevatedButton.icon(
-              onPressed: () {
-                // Handle Google login
-              },
-              icon: Icon(Icons.login),
-              label: Text('Login with Google'),
+              child: Text('Sign Up'),
             ),
             SizedBox(height: 16.0),
             ElevatedButton.icon(
               onPressed: () {
-                // Handle Facebook login
+                // Handle Google signup
               },
-              icon: Icon(Icons.login),
-              label: Text('Login with Facebook'),
+              icon: Icon(Icons.account_circle),
+              label: Text('Sign Up with Google'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton.icon(
+              onPressed: () {
+                // Handle Facebook signup
+              },
+              icon: Icon(Icons.account_circle),
+              label: Text('Sign Up with Facebook'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+              ),
             ),
             SizedBox(height: 16.0),
             TextButton(
               onPressed: () {
-                // Navigate to signup page
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignupView()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginView()),
+                );
               },
-              child: Text("Don't have an account? Signup"),
+              child: Text('Already have an account? Log in'),
             ),
           ],
         ),

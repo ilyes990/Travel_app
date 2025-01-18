@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:travel_app/const.dart';
+import 'package:travel_app/features/adventure_details/presentation/adventure_details_view.dart';
 import 'package:travel_app/home_view.dart';
 
-void main() {
-  Gemini.init(apiKey: GEM_API_KEY);
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    Gemini.init(apiKey: GEM_API_KEY);
+  } catch (e) {
+    // Handle initialization error
+    print("Error initializing Gemini: $e");
+  }
+  runApp(
+    ProviderScope(
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,11 +27,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
+        darkTheme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromARGB(255, 27, 27, 27),
           useMaterial3: false,
-          scaffoldBackgroundColor: Colors.black,
+          fontFamily: 'Neuton',
+          brightness: Brightness.dark,
         ),
-        home: HomeView());
+        title: 'Flutter Demo',
+        themeMode: ThemeMode.dark,
+        theme: ThemeData(
+          fontFamily: 'Neuton',
+          useMaterial3: false,
+          textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Neuton'),
+        ),
+        home: AdventureDetailsView());
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/adventure_details.dart';
+import 'package:travel_app/features/adventure_details/data/adventure_repo_implmnt.dart';
+import 'package:travel_app/features/adventure_details/presentation/adventure_details_view.dart';
 
 class AdventureFormPage extends StatefulWidget {
-  final GeminiService geminiService;
+  final AdventureRepositoryImpl geminiService;
 
   const AdventureFormPage({super.key, required this.geminiService});
   @override
@@ -19,30 +20,30 @@ class _AdventureFormPageState extends State<AdventureFormPage> {
 
   String generatedItems = '';
 
-  void generateItems() {
-    widget.geminiService
-        .getAdventureItems(
-      // type: _typeController.text,
-      // members: int.parse(_membersController.text),
-      // difficulty: _difficultyController.text,
-      // distance: _distanceController.text,
-      // challenge: _challengeController.text,
-      // weather: _weatherController.text,
-      type: 'hiking',
-      members: 4,
-      difficulty: 'medium',
-      distance: '10km',
-      challenge: 'river crossing',
-      weather: 'sunny',
-    )
-        .then((output) {
-      setState(() {
-        generatedItems = output; // Display the generated items
-      });
-    }).catchError((e) {
-      print('Error generating items: $e');
-    });
-  }
+  // void generateItems() {
+  //   widget.geminiService
+  //       .getAdventureItems(
+  //     // type: _typeController.text,
+  //     // members: int.parse(_membersController.text),
+  //     // difficulty: _difficultyController.text,
+  //     // distance: _distanceController.text,
+  //     // challenge: _challengeController.text,
+  //     // weather: _weatherController.text,
+  //     type: 'hiking',
+  //     members: 4,
+  //     difficulty: 'medium',
+  //     distance: '10km',
+  //     challenge: 'river crossing',
+  //     weather: 'sunny',
+  //   )
+  //       .then((output) {
+  //     setState(() {
+  //       generatedItems = output; // Display the generated items
+  //     });
+  //   }).catchError((e) {
+  //     print('Error generating items: $e');
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +72,7 @@ class _AdventureFormPageState extends State<AdventureFormPage> {
                 controller: _weatherController,
                 decoration: InputDecoration(labelText: 'Weather Condition')),
             SizedBox(height: 20),
-            ElevatedButton(
-                onPressed: generateItems, child: Text('Generate Items')),
+            ElevatedButton(onPressed: () {}, child: Text('Generate Items')),
             SizedBox(height: 20),
             Text('Suggested Items:',
                 style: TextStyle(fontWeight: FontWeight.bold)),

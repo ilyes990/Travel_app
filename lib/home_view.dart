@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/Questionnaire/form_page.dart';
-import 'package:travel_app/adventure_details.dart';
+import 'package:travel_app/features/adventure_details/presentation/adventure_details_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -43,10 +43,7 @@ class HomeView extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdventureFormPage(
-                                geminiService: GeminiService(),
-                              ),
-                            ),
+                                builder: (context) => AdventureDetailsView()),
                           );
                         },
                         child: Image.network(

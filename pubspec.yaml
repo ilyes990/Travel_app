@@ -37,6 +37,7 @@ dependencies:
   supabase_flutter: ^2.8.2
   flutter_riverpod: ^2.6.1
   flutter_gemini: ^3.0.0
+  riverpod: ^2.6.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: Neuton
+      fonts:
+        - asset: assets/fonts/Neuton/Neuton-Regular.ttf
+        - asset: assets/fonts/Neuton/Neuton-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Neuton/Neuton-Light.ttf
+          weight: 400
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -78,6 +87,9 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
+
+
   # fonts:
   #   - family: Schyler
   #     fonts:
