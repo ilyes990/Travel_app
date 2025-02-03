@@ -1,29 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/Questionnaire/form_page.dart';
+import 'package:travel_app/colors.dart';
 import 'package:travel_app/features/adventure_details/presentation/adventure_details_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  HomeView({super.key});
+  final List<Map<String, String>> items = [
+    {
+      'imageUrl': 'assets/The Perfect Bikepacking Setup.jpeg',
+      'label': 'BikePacking',
+      'location': 'Seraidi'
+    },
+    {
+      'imageUrl': 'assets/image4.jpg',
+      'label': 'Upcoming',
+      'location': 'Alaska'
+    },
+    {
+      'imageUrl': 'assets/image2.jpg',
+      'label': 'Upcoming',
+      'location': 'Austria'
+    },
+    // Add more items as needed.
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // Assuming dark theme
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        leading: Icon(Icons.person, color: Colors.white),
-        title:
-            Text('Good morning, Ilyes', style: TextStyle(color: Colors.white)),
-      ),
+      backgroundColor: appBackground,
+      // Assuming dark theme
+
       body: Column(
         children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
+          Row(
+            children: [
+              Text('Good morning,\nUser',
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
+              Icon(Icons.person, color: Colors.white),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.02,
+          ),
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Past Adventures', style: TextStyle(color: Colors.white)),
+                Text('Past Adventures',
+                    style: TextStyle(color: Colors.white, fontSize: 25)),
                 TextButton(
                   onPressed: () {},
                   child: Text('See more', style: TextStyle(color: Colors.grey)),
@@ -31,52 +57,70 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                Card(
-                  margin: EdgeInsets.all(8.0),
-                  child: Stack(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AdventureDetailsView()),
-                          );
-                        },
-                        child: Image.network(
-                          '', // Replace with actual URL
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: 200,
-                        ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+          ),
+          SizedBox(
+            height: 300,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    if (items[index]['label'] == "BikePacking") {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdventureDetailsView()),
+                      );
+                    } else {}
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        image: AssetImage('${items[index]['imageUrl']}'),
+                        fit: BoxFit.cover,
                       ),
-                      Positioned(
-                        bottom: 10,
-                        left: 10,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Hiking trip',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20)),
-                            Text('Seraïdi, Annaba',
-                                style: TextStyle(color: Colors.white)),
-                          ],
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: items[index]['label'] == "Upcoming"
+                                ? const Color.fromARGB(163, 54, 52, 52)
+                                : Colors.transparent,
+                          ),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          bottom: 10,
+                          left: 10,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('${items[index]['label']}',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                              Text('${items[index]['location']}',
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                );
+              },
             ),
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: appBackground,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

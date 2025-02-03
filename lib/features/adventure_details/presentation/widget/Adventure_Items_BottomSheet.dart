@@ -35,7 +35,7 @@ class AdventureItemsBottomSheet extends ConsumerWidget {
               ),
           data: (items) {
             final itemList = items
-                .split(RegExp(r'-|\n'))
+                .split(" - ")
                 .map((item) => item.trim())
                 .where((item) => item.isNotEmpty)
                 .toList();

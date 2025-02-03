@@ -21,8 +21,8 @@ class NextButton extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black, // Background color
-            foregroundColor: Colors.white, // Foreground (text) color
+            backgroundColor: Colors.white, // Background color
+            foregroundColor: Colors.black, // Foreground (text) color
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5), // Border radius
             ),
@@ -43,7 +43,10 @@ class NextButton extends StatelessWidget {
               );
             }
           },
-          child: Text(currentPage < pageCount - 1 ? 'NEXT' : 'GET STARTED'),
+          child: Text(
+            currentPage < pageCount - 1 ? 'NEXT' : 'GET STARTED',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          ),
         ),
       ),
     );

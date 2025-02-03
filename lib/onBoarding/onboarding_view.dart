@@ -16,6 +16,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 19, 19, 19),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -77,8 +78,8 @@ Widget buildPageIndicator(int currentPage, int pageCount) {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: currentPage == index
-              ? const Color.fromARGB(255, 34, 41, 47)
-              : Colors.grey,
+              ? Colors.grey
+              : const Color.fromARGB(255, 34, 41, 47),
         ),
       ),
     ),

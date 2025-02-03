@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:travel_app/const.dart';
-import 'package:travel_app/features/adventure_details/presentation/adventure_details_view.dart';
-import 'package:travel_app/home_view.dart';
+import 'package:travel_app/onBoarding/onboarding_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +39,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: false,
           textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Neuton'),
         ),
-        home: AdventureDetailsView());
+        home: OnboardingView());
   }
 }
+
+/* 
+
+each adventure has a title, 
+
+
+*/
